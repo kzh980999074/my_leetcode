@@ -6,11 +6,11 @@ class TreeNode:
         self.val=x
         self.left=None
         self.right=None
-
+'false'
 def isbalanced(root):
     if not root :return True
     l=-1
-    i=1
+    i=0
     
     stack=[[],[]]
     stack[0].append(root)
@@ -23,6 +23,7 @@ def isbalanced(root):
             else:
                 l=i
         if l==i:
+            print(l)
             break
         else:
             i+=1

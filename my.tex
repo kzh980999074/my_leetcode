@@ -1,0 +1,781 @@
+\documentclass[12pt]{cctart}
+\vsize=29.7 true cm \hsize=21.0 true cm \topmargin 0pt
+\oddsidemargin 12pt \evensidemargin 12pt \textheight=22.5 true cm
+\textwidth=15.5 true cm \pagestyle{plain}
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{bm}
+\def \[{\begin{equation}}
+\def \]{\end{equation}}
+\def \l{\left}
+\def \r{\right}
+\def \om{\omega}
+
+
+%\def \theequation{\thesection.\arabic{equation}}
+\def \endzm{\hfill$\sqcap \!\!\!\! \sqcup$\bigskip}
+\renewcommand{\baselinestretch}{2.4}
+
+\usepackage{threeparttable}
+
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{tocloft}
+\let\CCTCJKfonts=1
+\input CCT.sty
+\renewcommand{\cftsecdotsep}{2}
+\renewcommand{\cftsubsecdotsep}{2}
+\renewcommand{\cfttoctitlefont}{\LARGE\heiti\hfill}
+\renewcommand{\cftaftertoctitle}{\\ [0.3\baselineskip]\mbox{}\hfill{\Large \bf Contents}}
+\renewcommand{\cftaftertoctitleskip}{40mm}
+
+\newtheorem{theorem}{定理}[section]
+\renewcommand{\thetheorem}{\arabic{section}.\arabic{theorem}}
+\newtheorem{definition}{定义}[section]
+\renewcommand{\thedefinition}{\arabic{section}.\arabic{definition}}
+\newtheorem{proposition}{命题}[section]
+\renewcommand{\theproposition}{\arabic{section}.\arabic{proposition}}
+\newtheorem{corollary}{Corollary}[section]
+\renewcommand{\thecorollary}{\arabic{section}.\arabic{corollary}}
+\newtheorem{lemma}{引理}[section]
+\renewcommand{\thelemma}{\arabic{section}.\arabic{lemma}}
+\newtheorem{remark}{注}
+\renewcommand{\theremark}{\arabic{section}.\arabic{remark}}
+\newtheorem{proof}{证明}
+\renewcommand{\theproof}{}
+
+
+
+
+
+
+\begin{document}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 封面 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty}
+
+%\centerline{\includegraphics[width=76mm,height=19mm]{nju.eps}}
+
+\vskip 1cm
+
+\centerline{\zihao{0} \ziju{0.4} \biaosong 研究生毕业论文}
+
+\bigskip
+
+\centerline{\zihao{2} \ziju{0.3} \kaishu （申请硕士学位）}
+
+%\vspace{1cm}
+
+\vspace{1cm}
+
+%\centerline{\includegraphics[width=50mm,height=58mm]{njuxh.eps}}
+
+{\zihao{4}
+\begin{tabbing}
+
+\hspace{1.6cm} \= \hspace{2.8cm} \= \kill
+
+\>{\zihao{3} \kaishu 论文题目: }\>
+
+\underline{\bf\quad\quad\;\,间断有限元误差估计中投影技术的分析\quad\quad\;\,}\\
+
+\>{\zihao{3} \kaishu 作 \hskip 11.5mm  者:} \> \underline{\bf\quad\quad\quad\quad\quad\quad\quad\quad 周凯\quad\quad\quad\quad\quad\quad\quad\quad\,}\\
+
+%\>{\zihao{3} \kaishu 专 \hskip 11.5mm  业:} \> \underline{\bf\quad\quad\quad\quad\quad\,\,\,概率论与数理统计\,\,\,\,\quad\quad\quad\quad\quad}\\
+%
+%\>{\zihao{3} \kaishu 研究方向: }\> \underline{\bf\quad\quad\quad\quad\quad\quad\quad\,\,\, 时间序列\,\,\,\quad\quad\quad\quad\quad\quad\quad} \\
+%
+%\>{\zihao{3} \kaishu 指导教师: }\> \underline{{\bf \quad\quad\quad\quad\quad\quad\,\,\,\,王立洪\quad教授\quad\,\,\quad\quad\quad\quad\quad\,}} \\
+\end{tabbing}
+
+%\vspace{1.8cm}
+
+\centerline{\ziju{0.2}
+二\hspace{0.1cm}\!\raisebox{0.4mm}{$\bigcirc$\!
+\hspace{0.1cm}一九年二月十日} } %\newpage
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 封二 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\thispagestyle{empty}
+%
+%\vbox{\vskip 18.8cm}
+%
+%\noindent {\zihao{3} \kaishu 学 \hskip 22.7mm 号：{\Large \tt
+%\hskip 2mm MG0621027}
+%
+%\noindent {\zihao{3} \kaishu 论文答辩日期：\hskip 25mm 年 \hskip
+%12mm 月 \hskip 12mm 日}
+%
+%\noindent {\zihao{3} \kaishu 指 \hskip 3.9mm 导 \hskip 3.9mm 教
+%\hskip 3.9mm 师：\hskip 48mm （签字）}
+
+%\newpage
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 目录 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% \setcounter{page}{1}
+% \pagenumbering{Roman}
+%\renewcommand{\baselinestretch}{1.9}
+%
+%\small\normalsize
+%
+%\tableofcontents
+%
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 中文摘要 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\baselinestretch}{1.9}
+\small\normalsize
+
+\thispagestyle{fancy} \fancyhead[C]{{\kaishu 中文摘要}}
+
+\setcounter{page}{1} \pagenumbering{arabic}
+
+\clearpage \addcontentsline{toc}{section}{\bf 中文摘要 }
+
+%\noindent 毕业论文题目： \underline {长记忆波动率序列的适应性预测}
+%
+%\noindent \underline {概率论与数理统计} 专业\hskip 0.2cm
+%\underline{2006} 级 硕士生姓名： \underline {侯大为}
+%
+%\noindent 指导教师（姓名、职称）\,：\underline {王立洪教授}
+
+\vskip 20mm
+本篇文章的主要内容是对间断有限元误差分析中各种投影技术的研究。常见的投影有局部$L^2$投影，Gauss-Rauda投影，和广义GR投影。我们给出了这些投影存在和合理性,和插值逼近性质。主要研究这些投影在一阶双曲方程和对流扩散方程中的作用。
+\bigskip
+
+\noindent {\bf 关键词：}\
+间断有限元，投影算子，Guass-Radau，局部L2，误差估计
+
+
+\newpage
+
+\section{间断有限元方法和投影的简介 }
+\bigskip
+有限元方法是现代科学和工程学领域中最重要的数值方法之一，有限元方法最初是在20世纪50年代由工程们提出的，
+数值求解椭圆方程的一种方法。其数学基础的奠定是由以冯康先生为代表的中国学者和西方学者独立完成的。
+
+间断有限元方法最早可以追溯到19世纪70年代。
+在1973年，由Reed和Hill \cite{Reed} 发表的一篇关于三角网格的中子运输方程中依据迎风格式的思想，提出了间断有限元方法。
+间断有限元方法是对传统有限元的发展和创新，其优点时在跨越单元交界面是时没有连续性要求。
+而在对边界单元的处理方式上，可以将间断有限元分为两种形式，分别是数值通量形式和内部惩罚的形式。
+该方法在最初的十几年里，由于人们并没有充分认识到它相对与连续有限元又具备的显著的优点，所以没能得到很好的发展。
+而在20世纪80年代，间断有限元方法首次被Lesaint和Raviart \cite{LESA} 进行分析，并且在任意三角形网格上建立了收敛到$O(h^n)$的$L_2$范数收敛，$h$ 是网格的尺度。
+在这之后，Johnson和Pitkr\"{a}nta \cite{JOHN}通过运用傅里叶技术，在$L_p$ 空间中获得了更高阶的误差估计，即
+\begin{equation}
+\|u_h-u\|\leq{Ch^{n+1}\|u\|_{H^{n+1}(\Omega)}}
+\end{equation}
+在1988年，Richter \cite{RICHTER}用间断有限元对双曲方程进行了分析，并且在半一致三角形网格剖分中的到了最优阶误差估计
+\begin{equation}
+\|u_h-u\|+\max_{0\leq{j}\leq{m}}|{u_h^-}-u|_{y=y_j}\leq{Ch^{n+1}\|u\|_{n+2,\Omega}}
+\end{equation}
+由于间断有限元在数值求解一阶双曲方程问题上的成功，间断有限元重新受到了人们的重视。此后间断有限元成为了数值求解偏微分方程的主流数值方法之一。
+
+一阶双曲方程发展历史及其投影
+
+对流扩散方程的发展历史及其中的投影
+
+
+
+\bigskip
+
+\newpage
+
+\section{一阶双曲方程}
+    一阶双曲方程的历史，及其中投影的应用的简介。
+
+\subsection{基本知识及符号}
+
+对于有界区域$\Omega$,定义$T_h$为区域$\Omega$上的一个剖分。有限元空间$V^k_h$和分片sobolev空间$H^k(T_h)$的定义：
+$$
+V^k_h=\{v\in L^2(\Omega):v|_k \in P^k(K),\forall K\in T_h\},
+$$
+$$
+H^k(T_h)=\{v\in L^2(\Omega):v|_k \in H^k(K),\forall K \in T_h\}.
+$$
+其中$P^k(K)$为单元$K$上次数不超过$k$的多项式集合,$k\geq0$为整数。定义单元$K$上的内积$(u,v)_{K}=\int_K uvdx$，
+如果去掉下标$K$，则表示整个区域的内积。单元$K$的长度$h_K=diam(K)$，$h=\max_{K\in T_h}h_K$。sobolev空间：$W^k_p(\Omega)=\{u:D^\alpha u \in L^p(\Omega),|\alpha|\leq p \}$，对任意$u\in W^k_p(\Omega)$，$\|u\|_{k,p,\Omega}$表示其范数。当$p=2$时，令$H^k(\Omega)=W^k_2(\Omega)$，其上
+范数用$\|u\|_{k,\Omega}$表示。则$\|u\|_{0,\Omega}$表示$\Omega$上的$L^2$范数。
+
+
+
+
+
+
+\subsection{问题及格式}
+首先给出一阶双曲方程的初值问题：
+\begin{equation}
+\label{q1}
+\begin{aligned}
+&u_t+\boldsymbol{\beta} \cdot \nabla u=0 \qquad x\in \Omega\times (0,T),\\
+&u(x,0) = u_0(x) \qquad x\in \Omega,
+\end{aligned}
+\end{equation}
+其中$\Omega \in R^d$为有界区域,$\boldsymbol\beta$为常向量。令$T_h$为区域$\Omega$上的剖分，$V^k_h$为间断有限元空间。
+间断有限元格式：寻找$u_h\in V^k_h$，对所有的$K\in T_h$满足
+\begin{equation}
+\label{dg1}
+((u_h)_t,v)_{K} - ( \boldsymbol{\beta} u_h,\nabla v )_{K}+ ( \boldsymbol{\beta} \cdot \mathbf{n} \hat{u_h} ,v)_{\partial K}=0,\quad
+\forall v\in V^k_h.
+\end{equation}
+其中$\hat{u_h}$为数值通量。
+
+
+
+
+
+\bigskip
+
+
+
+\subsection{投影定义}
+
+\subsubsection{$L_2$投影}
+$L_2$投影的定义，和逼近性质
+在间断有限元误差估计中，定义一个适当的投影是关键的。
+$L_2$投影是在间断有限元中常见的一种投影。在1975 年，Jim Dougla和给出了$L_2$投影在一维空间中关于无穷模的稳定性质和投影逼近性质\cite{DJW1975}，
+同年他还给出了$L_2$投影关于$L^p$模的稳定性质\cite{DHW19751}.
+在1987年，Thomee证明了在$L_2$ 投影在$W^1_p$空间的稳定性\cite{CT1987}。
+在2001年，Brambel证明了$L_2$投影在$H^1(\Omega)$ 空间中的稳定性。
+
+
+$L_2$投影的定义如下：
+\begin{definition}
+设$T_h$是区域$\Omega$上形状正则的剖分，$V^k_h$是建立在剖分$T_h$上的间断有限元空间。定义局部$L_2$-投影算子$P_hu:  u\in L^2 \rightarrow P_hu\in V^k_h$, 限制在单元$K\in T_h$上，$P_hu\in P_k$满足：
+$$
+(u-P_hu,v_h)_K=0,\forall v_h \in P_k(K),K\in T_h
+$$
+\end{definition}
+其中$(u,v)_K=\int_Ku\cdot vdx $，$P_k(K)$为单元$K$上次数不超过$k$次多项式函数的集合。对于局部$L_2$投影其存在唯一性是显然的。下面给出关于局部$L_2$投影的稳定性\cite{DHW19751}：
+\begin{lemma}
+局部$L_2$-投影算子$P_h$ 具有如下稳定性质：
+$$
+\|P_hu\|_{o,p,K}\leq C_p\|u\|_{0,p,K},1\leq p\leq\infty
+$$
+其中$C_p$为与单元$K$无关的有界常量。
+\end{lemma}
+接下来我们将介绍局部$L_2$投影的逼近性质：
+
+\begin{lemma}
+
+设$T_h$是形状正则的剖分，局部$L_2$投影算子具有如下逼近性质：
+\begin{equation}
+\|u-P_hu\|_{0,p,K}\leq Ch_k^{k+1}\|u\|_{k+1,p,K}
+\end{equation}
+其中$C$为与单元$K$无关的有界常量，$W^{k,p}(K)=\{u:D^\alpha u \in L^p(K),|\alpha|\leq p \}$。
+\end{lemma}
+\begin{proof}
+idea:对上述局部$L_2$投影逼近性质的证明，首先应用访射变换，将实际单元变换到参考单元，然后结合投影的稳定性质和Bramble-Hilbert引理.
+补充
+\end{proof}
+
+\bigskip
+
+
+
+\subsubsection{Gauss-Radau投影}
+
+本节中，我们将介绍在间断有限元中另外一个在间断有限元误差估计中常用的投影Gauss-Radau投影。1975年，P.Ciarlet 在\cite{PC1975}
+中给出Gauss-Radau投影的逼近性质。2001年，Cuckborn\cite{CB2001GR}为了证明椭圆问题在LDG格式下的超收敛性质，定义了二维矩形剖分下的Gauss-Radau投影,并证明了其逼近性质.2008年，Cockburn\cite{CB2008GR}在证明特殊的杂交间断有限元方法在二阶椭圆问题的超收敛性质的时候定义了在三角单元下的GR投影，证明了其逼近性质，并且在同年Cockburn使用该投影证明了在满足流条件的三角剖分下运输反应方程的间断有限元方法能够得到最优阶误差估计\cite{CB2008}。
+
+
+对于区域$\Omega$，$V^k_h$是在区域Ω上的间断有限元空间。下面将依次介绍在一维，二维矩形剖分，二维三角剖分下的Gauss-Rauda投影：
+\begin{definition}
+在一维形况下，设$T_h(I)$是区域$I=(0,1)$上的剖分，$I_j=(x_{j-\frac12},x_{j+\frac12})\in T_h(I)$,$V^k_h$是建立在剖分$T_h$上的间断有限元空间，对任意$u\in L^2(I)$
+定义Gauss-Radau投影算子$P^{\pm}_1 : u\in L^2(I)\rightarrow P_1^{\pm}u\in V^k_h$，在单元$I_j$ 上的投影算子满足下述性质：
+$$
+(u-P_1^{\pm}u,v)_{I_j}=0,\forall v\in P_{k-1}(I_{j}),
+$$
+$$
+P_1^+ u(x_{j-\frac12}^+)=u(x_{j-\frac12}^+),
+$$
+$$
+P_1^- u(x_{j+\frac12}^-)=u(x_{j+\frac12}^-).
+$$
+\end{definition}
+%其中$\partial K$为K的一个面。GR逼近性质\cite{CB2001GR}
+\begin{definition}
+在二维形况下，设$T_h(\Omega)$是区域$\Omega=I\times I$上的矩形剖分，$\Omega_{ij}=I_i\times I_j \in T_h(\Omega)$,$V^k_h$是建立在剖分$T_h$ 上的间断有限元空间，对任意$u\in L^2(\Omega)$
+定义Gauss-Radau投影算子$P^{-}_2 : u\in L^2(I)\rightarrow P_2^{-}u\in V^k_h$($P^{+}_2$的定义类似可得)，在任意单元$\Omega_{ij}\in T_h$ 上的投影算子满足下述性质：
+$$
+(P^{-}_2u-u,v)_{\Omega_{ij}}=0,\quad \forall v\in Q^{k-1}(\Omega_{ij}),
+$$
+$$
+(P^{-}_2 u(x^-_{i+\frac12},y)-u(x^-_{i+\frac12},y),v)_{I_j}=0,
+$$
+$$
+(P^{-}_2 u(x,y^-_{j+\frac12})-u(x,y^-_{j+\frac12}),v)_{I_i}=0,
+$$
+$$
+P^{-}_2 u(x^-_{i+\frac12},y^-_{j+\frac12})=u(x^-_{i+\frac12},y^-_{j+\frac12}).
+$$
+\end{definition}
+
+\begin{definition}
+在二维形况下，设$\boldsymbol{\beta}$为给定的二维常向量，$T_h(\Omega)$是区域$\Omega$上满足流条件的三角剖分，$K \in T_h(\Omega)$,$V^k_h$是建立在剖分$T_h$ 上的间断有限元空间，对任意$u\in L^2(\Omega)$
+定义Gauss-Radau投影算子$P_2 : u\in L^2(\Omega)\rightarrow P_2u\in V^k_h$，在任意单元$K \in T_h$ 上的投影算子满足下述性质：
+$$
+(P_2u-u,v)_{K}=0,\quad \forall v\in P^{k-1}(K),
+$$
+$$
+(P_2 u-u,v)_{\partial K^+}=0 ,\quad P^{k}(\partial K^+).
+$$
+其中$\partial K$为单元$K$的边，$\partial K^+=\{x\in \partial K: \boldsymbol{\beta}\cdot \boldsymbol{n}>0\}$表示单元$K$的出流边界，流条件是剖分$T_h$中的所有单元都只有一个出流边，并且出流边上没有悬挂点。
+\end{definition}
+如上定义的GR投影的逼近性质\cite{PC1975, CB2001GR,CB2008GR}如下：
+\begin{lemma}
+$T_h$是区域$\Omega$上的剖分，$K\in T_h$，对于任意$u\in H^{k+1}(T_h)$，$V^k_h$为间断有限元空间，则由上述定义的Gauss-Rauda投影$P^{\pm}_\nu(u)$, 存在唯一并且满足如下逼近性质:
+\begin{equation}
+\|u-P^{\pm}_\nu(u)\|_{0,K}\leq Ch_k^{k+1}\|u\|_{k+1,K}
+\end{equation}
+其中$\nu<3$为空间维度。$C$为与单元$K$无关的常数。进一步，如果$T_h$为拟一致剖分，则有整体逼近性质：
+\begin{equation}
+\|u-P^{\pm}_\nu(u)\|_{0,\Omega}\leq Ch_k^{k+1}\|u\|_{k+1,\Omega}
+\end{equation}
+\end{lemma}
+\begin{proof}
+补充
+\end{proof}
+
+\bigskip
+
+
+
+
+
+
+\subsubsection{广义Gauss-Radau投影}
+本小节我们介绍由Gauss-Radau投影推广得到的与数值通量的选取有关的投影广义Gauss-Radau(GGR)投影。2016年，孟雄为了证明在迎风占优数值通量下的误差估计提出了GGR投影\cite{MX}，并通过GR投影证明了GGR投影的逼近性质。同年，陈遥应用该投影证明了线性对流扩散方程的LDG方法的最优阶误差估计\cite{ChengY}。
+
+\begin{definition}
+在一维形况下，设$T_h(I)$是区域$I=(0,1)$上的剖分，$I_j=(x_{j-\frac12},x_{j+\frac12})\in T_h(I)$，$V^k_h$是建立在剖分$T_h$上的间断有限元空间，对任意$u\in L^2(I)$
+定义GGR投影算子$P_{\theta} : u\in L^2(I)\rightarrow P_{\theta}u\in V^k_h$，在单元$I_j$ 上的投影算子满足下述性质：
+$$
+(u-P_\theta u,v)_{I_j}=0,\quad \forall v\in P_{k-1}(I_{j}),
+$$
+$$
+\widehat{P_\theta u}(x_{j-\frac12})=\widehat{u}(x_{j-\frac12}), \quad j=1,2,...,N.
+$$
+其中对任意函数$w\in L^2(I)$,$\widehat{w}(x)=\theta w(x^-)+(1-\theta)w(x^+)$,$0\leq\theta \leq 1$.
+\end{definition}
+
+
+\begin{definition}
+在二维形况下，设$T_h(\Omega)$是区域$\Omega=I\times I$上的矩形剖分，$\Omega_{ij}=I_i\times I_j \in T_h(\Omega)$,$V^k_h$是建立在剖分$T_h$ 上的间断有限元空间，对任意$u\in L^2(I)$
+定义GGR投影算子$P_{\theta_1,\theta_2} : u\in L^2(I)\rightarrow P_{\theta_1,\theta_2}u\in V^k_h$，在任意单元$\Omega_{ij}\in T_h$ 上投影算子满足如下性质：
+$$
+(P_{\theta_1,\theta_2}u-u,v)_{\Omega_{ij}}=0,\quad \forall v\in Q^{k-1}(\Omega_{ij}), \quad \forall v\in Q^{k-1}(\Omega_{ij}),
+$$
+$$
+((P_{\theta_1,\theta_2}u)^{\theta_1,y}(x_{i+\frac12},y)-u^{\theta_1,y}(x_{i+\frac12},y),v)_{I_j}=0 \quad \forall v \in P^{k-1}(I_j),
+$$
+$$
+((P_{\theta_1,\theta_2}u)^{x,\theta_2}(x,y_{j+\frac12})-u^{x,\theta_2}(x,y_{j+\frac12}),v)_{I_i}=0 \quad \forall v \in P^{k-1}(I_i),
+$$
+$$
+(P_{\theta_1,\theta_2}u)^{\theta_1,\theta2}(x_{i+\frac12},y_{j+\frac12})=u^{\theta_1,\theta2}(x_{i+\frac12},y_{j+\frac12})
+$$
+其中$0\leq \theta_1,\theta_2 \leq 1$，$u^{\theta_1,\theta_2}$的定义如下
+$$
+u^{\theta_1,\theta_2}(x,y)=\theta_1\theta_2u(x^-,y^-)+(1-\theta_1)\theta_2u(x^+,y^-)+\theta_1(1-\theta_2)u(x^-,y^+)+(1-\theta_1)
+(1-\theta_2)u(x^+,y^+)
+$$
+\end{definition}
+
+
+
+
+
+接下来，给出GGR投影的逼近性质\cite{ChengY}：
+\begin{lemma}
+
+
+$T_h$是区域$\Omega$上的剖分，$K\in T_h$，对于任意$u\in H^{k+1}(T_h)$，$V^k_h$为间断有限元空间，则由上述定义的GGR投影$P(u)$,存在唯一并且满足如下逼近性质：
+\begin{equation}
+\|u-Pu\|_{0,K}+\|u-Pu\|_{0,\partial K} \leq Ch_k^{k+1}\|u\|_{k+1,K}
+\end{equation}
+当维度$d=1$时，$Pu=P^{\theta}u$,当维度$d=2$时$Pu=P^{\theta_1,\theta_2}u$，$C$为与单元$K$无关的常数。进一步，如果$T_h$为拟一致剖分，则有整体逼近性质：
+\begin{equation}
+\|u-Pu\|_{0,\Omega}+\|u-Pu\|_{0,\partial\Omega}\leq Ch_k^{k+1}\|u\|_{k+1,\Omega}
+\end{equation}
+\end{lemma}
+
+
+
+
+
+
+
+
+
+
+
+
+
+一维的定义及其证明\cite{MX}
+
+二维的定义证明\cite{ChengY}
+
+
+\bigskip
+
+\subsection{分析}
+
+通过原问题 \eqref{q1}及其间断有限元格式 \eqref{dg1}可以得到任意单元$K\in T_h$上的误差方程：
+\begin{equation}
+((u-u_h)_t,v  )_K-(  \boldsymbol{\beta}(u-u_h),\nabla v  )_K+< \boldsymbol{\beta}\cdot \boldsymbol{n}(u-\hat{u}_h),v>_{\partial K}=0,\quad \forall v\in V_h
+\end{equation}
+我们令$e=u-u_h$，对于任意投影$P$,令$\eta=u-Pu,\xi=u_h-Pu$。$e=\eta-\xi$.从上式得到：
+\begin{equation}
+\label{e1}
+(e_t,v)_K-(\eta,\boldsymbol{\beta}\cdot \nabla v)_K+(\xi,\boldsymbol{\beta}\cdot \nabla v)_K+<\boldsymbol{\beta}\cdot \boldsymbol{n}(u-\hat{u}_h),v>_{\partial K}=0
+\end{equation}
+关于数值解$u_h$和真解$u_h$,给出一般形式的误差估计结果:
+\begin{equation}
+\|u-u_h \| \leq Ch^{k+\sigma}
+\end{equation}
+其中$\sigma$的取值与数值通量的选取，投影的选取和剖分的方式有关，$C$为常数。
+
+
+当空间维数$d=1$,数值通量取迎风通量\cite{CYD2010},即$\hat{u}_h=u_h^-$,通过使用Gauss-Radau投影可以得到最优阶误差估计，即$\sigma=1$。不失一般性，我们令原问题
+\eqref{q1}中$\boldsymbol{\beta}=1$，
+区域$\Omega=I=(0,1)$,剖分$T_h=\{I_i\}_{i=0}^N$为规则剖分,其中$I_i=(x_{i-\frac12},x_{i+\frac12})$，$0=x_\frac12<x_\frac32<...<x_{N+\frac12}$在$I_j$上，误差方程\eqref{e1}可以写成
+\begin{equation}
+\begin{aligned}
+\label{e2}
+&(e_t,v)_{I_j}+(\xi,v_x)_{I_j}-(\eta,v_x)_{I_j}+(\eta v^-|_{i+\frac12}-\eta v^+|_{i-\frac12}) \\
+&-(\xi^-v^-|_{i+\frac12}-\xi^- v^+|_{i-\frac12})=I_1+I_2+I_3+I_4+I_5=0.
+\end{aligned}
+\end{equation}
+由于上式误差方程中存在边界项，如果使用局部$L_2$ 投影$P=P_h$，边界项无法消去，得不到最优阶误差估计。所以令投影$P=P^-$为Gauss-Radau投影。
+根据投影的定义我们可以得到$I_3=0,I_4=0$.令$v=\xi$带入\eqref{e2},并且对$I_2$进行分部积分可以得到：
+\begin{equation}
+\label{e3}
+(\eta_t,\xi)_{I_j}-(\xi_t,\xi)_{I_j}-(\frac12 \xi^-\xi^-|_{i+\frac12}-\xi^- \xi^+|_{i-\frac12}+\frac12 \xi^+ \xi^+|_{i-\frac12})=0.
+\end{equation}
+对于初值边界条件$u(x,0)=u_0(x)$，取初值$u_h(x,0)=P^-u_0$。\eqref{e3}对所有的区域进行求和，利用初值条件可以得到：
+\begin{equation}
+\label{e4}
+(\eta_t,\xi)-(\xi_t,\xi)-\sum_{j=1}^{N}(\xi^+ -\xi^-)^2|_{j+\frac12}=0
+\end{equation}
+对于周期边界条件可以得到：
+\begin{equation}
+\label{e5}
+(\eta_t,\xi)-(\xi_t,\xi)-\sum_{j=0}^{N}(\xi^+ -\xi^-)^2|_{j+\frac12}=0
+\end{equation}
+从\eqref{e4}和\eqref{e5}可以得到：
+\begin{equation}
+\frac{d}{dt}\|\xi_t\| \leq \frac{d}{dt}\|\eta_t\|
+\end{equation}
+对上式两边从 $(0,t)$ 上进行积分然后使用三角不等式和投影逼近性质即可以得出误差估计：
+\begin{equation}
+\| e(t)\| \leq C(1+t)h^{k+1}
+\end{equation}
+
+
+当空间维数$d=1$,数值通量选取upwind-biased数值通量\cite{MX},即$\hat{u}_h=\theta u_h^-+(1-\theta)u_h^+$，其中$\theta>\frac12$。如果使用$L_2$投影和Gauss-Radau 投影来证明误差估计,将会出现额外的边界项，从而导致得不到最优阶误差估计。给了处理边界项，我们使用与通量参数$\theta$有关的GGR投影$P=P^\theta$，同样的令原问题\eqref{q1}中$\boldsymbol{\beta}=1$，区域$\Omega=I=(0,1)$,剖分$T_h=\{I_i\}_{i=0}^N$为规则剖分。误差方程
+\eqref{e1} 可以写成
+\begin{equation}
+\begin{aligned}
+\label{e5}
+&(e_t,v)_{I_j}+(\xi,v_x)_{I_j}-(\eta,v_x)_{I_j}+(\hat{\eta}v^-|_{i+\frac12}-\hat{\eta}v^+|_{i-\frac12}) \\
+&-(\hat{\xi}v^-|_{i+\frac12}-\hat{\xi} v^+|_{i-\frac12})=0.
+\end{aligned}
+\end{equation}
+对上式对所有的剖分区域进行求和并令$v=\xi$可得：
+\begin{equation}
+\begin{aligned}
+&(e_t,\xi)+\sum_{j=0}^N(\hat{\eta}\xi^-|_{j+\frac12}-\hat{\eta}\xi^+|_{j-\frac12}- (\eta,\xi_x)_{I_j})+\sum_{j=0}^N((\xi,\xi_x)_{I_j}-\hat{\xi}\xi^-|_{j+\frac12}+\hat{\xi}\xi^+|_{j-\frac12}) \\
+&=M_1+M_2+M_3=0
+\end{aligned}
+\end{equation}
+当边界条件为周期边界时，根据投影GGR投影的定义可知$M_2=0$，对$M_3$进行分部积分可得：
+\begin{equation}
+(\eta_t,\xi)-(\xi_t,\xi)-(\theta-\frac12)\sum_{j=0}^{N}(\xi^+ -\xi^-)^2|_{j+\frac12}=0
+\end{equation}
+由于$\theta>\frac12$,所以可得最优阶误差估计：
+\begin{equation}
+\| e(t)\| \leq C(1+t)h^{k+1}
+\end{equation}
+当边界条件为初值边界条件时,由于边值信息的改变，相应的GGR投影也要做出相应的改变，消除导致误差阶数下降的项。定义投影$P_*^\theta$：
+对于任意$w\in H^1(I)$，$P_*^\theta w \in V_h$满足：
+$$
+(P_*^\theta w-w,v)=0  \quad \forall v\in P^{k-1}(I_j),
+$$
+$$
+(\hat{P_*^\theta}w)(x_{j+\frac12})=\hat{w}(x_{j+\frac12}) \quad j=1,2...,N-1 \ ,
+$$
+$$
+\hat{P_*^\theta}w)(x_{j+\frac12})=w^-(x_{j+\frac12}) \quad j=N
+$$
+关于该投影关于无穷模和$L^2$模的逼近性质与GR投影具有相同的逼近性质相同。详细参见\cite{MX}.使用这个投影，与周期边界条件相同的证明方法即可得到误差估计结果,即$\sigma=1$.
+
+
+
+
+
+
+
+%线性双曲方程$L^p$模误差估计\cite{CJJP}
+
+%迎风通量最优阶误差估计\cite{RICHTER}
+
+%upwind-biased通量最优阶误差估计\cite{MX}
+
+%线性守恒律的超收敛估计\cite{CYD2010}
+
+%迎风通量超收敛\cite{YY2012}
+
+%非线性守恒律RKDG \cite{ZQ2004} \cite{ZQ2010}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\section{对流扩散方程}
+
+\subsection{问题及格式}
+
+\subsubsection{格式}
+
+首先给出一维对流扩散问题：
+\begin{equation}
+\begin{aligned}
+&u_t+f(u)_x-bu_{xx}=0 \qquad x\in (0,T)\times (0,1), \\
+&u(x,0)=u_0 \qquad x\in(0,1).
+\end{aligned}
+\end{equation}
+其中$b>0$,令$a=\sqrt{b}$, $q=au_x$，则上式可以重新写为：
+\begin{equation}
+\begin{aligned}
+&u_t+f(u)_x-aq_x=0 \qquad x\in (0,T)\times (0,1), \\
+&q-au_x=0 \qquad x\in (0,T)\times (0,1), \\
+&u(x,0)=u_0 \qquad x\in(0,1).
+\end{aligned}
+\end{equation}
+间断有限元格式：寻找$u_h,q_h\in V^k_h$,满足：
+\begin{equation}
+\begin{aligned}
+&(u_t,v_h)_{I_j}-(f(u),(v_h)_x)_{I_j}+(aq,(v_h)_x)_{I_j}+(\hat{f}(u)-a\hat{q})v_h^-|_{j+\frac12}-
+(\hat{f}(u)-a\hat{q})v_h^-|_{j-\frac12}=0, \\
+&(q,v_h)_{I_j}+(au,v_h)_{I_j}-a\hat{u}v_h|_{j+\frac12}+a\hat{u}v_h|_{j-\frac12}=0.
+\end{aligned}
+\end{equation}
+
+
+
+
+
+\bigskip
+
+\subsection{投影的定义}
+沿用2.2节
+
+\subsection{分析}
+
+
+非线性对流扩散方程LDG 误差估计k阶 \cite{CB1997}
+
+非线性对流扩散方程LDG 误差估计 k+1/2阶 \cite{XY2007}
+
+非线性对流扩散方程LDG最优阶误差估计\cite{MB2018}
+
+线性对流扩散方程的超收敛估计\cite{CYD2010}
+
+线性对流扩散方程的最优阶误差估计\cite{PC2000}
+
+
+
+
+
+\newpage
+
+
+\section{总结}
+
+
+
+
+
+\newpage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 参考文献 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\clearpage \fancyhead[LR]{} \addcontentsline{toc}{section}{\bf
+参考文献}
+%(References)}
+%\thispagestyle{fancy} \fancyhead[C]{{ 参考文献}}
+\renewcommand{\baselinestretch}{1.5}
+\small\normalsize
+
+\begin{thebibliography}{99}
+
+\bibitem{DJW1975} Douglas, J., Jr., Dupont, T., Wahlbin, L.{\em Optimal $L_\infty$ error estimates for Galerkin
+approximations to solutions of two point boundary value problems}. Math. Comp., 29(130) (1975),475-
+483.
+
+\bibitem{DHW19751} J. Douglas, Jr., T. Dupont , L. Wahlbin, {\em The stability in $L^q$ of the $L_2$-projection into finite
+element function spaces}, Numer. Math., v. 23, 1975, 193-197.
+
+\bibitem{CT1987} Crouzeix M , Thomee V . {\em The Stability in $L_p$ and $W_p^1$ of the $L_2$ Projection onto Finite Element Function Spaces}. Mathematics of Computation, 1987, 48(178).
+
+\bibitem{Bra2002}  Bramble J H , Pasciak J E , Steinbach O . {\em On the Stability of the $L^2$Projection in $H^1(\Omega)$ }. Mathematics of Computation, 2002, 71(237),147-156.
+
+\bibitem{Reed} W.H.Reed and T.R.Hill, {\em Triangular Mesh Methods for the Neutron Transport Equation,
+Econometrica},  Los Alamos Scientific La, 1973.
+
+\bibitem{LESA} P.Lesaint and PA.Raviart, {\em On a finite element method for solving the neutron transport equation},
+ Mathematical Aspects of Finite Elements in Partial Differential Equations, 1974, 89-123.
+
+
+\bibitem{JOHN} C. Johnson and Ranta,{\em An analysis of the discontinuous Galerkin method for a scalar hyperbolic equation}, Mathematics of Computation, {\bf 46}(1986), 1-26.
+
+\bibitem{RICHTER} G.R.Richter ,
+{\em An Optimal-Order Error Estimate for the Discontinuous Galerkin Method }, Mathematics of Computation, {\bf 50}(1988), 75-88 .
+
+\bibitem{MX} X. Meng, C.-W. Shu, and B. Wu, {\em Optimal error estimates for discontinuous Galerkin methods based on upwind-biased fluxes for linear hyperbolic equations}, Math. Comp. 85 (2016), no. 299, 1225–1261.
+
+\bibitem{ChengY} Y.Cheng, X.Meng, Q.Zhang. {\em Application of generalized Gauss–Radau projections for the local discontinuous Galerkin method for linear convection-diffusion equations}. Mathematics of Computation, 2016, 86(305), 1233-1267.
+
+\bibitem{CJJP} C. Johnson and J. Pitk\"{a}ranta,{\em An analysis of the discontinuous Galerkin method for a
+scalar hyperbolic equation}, Math. Comp, 46 (1986), 1–26.
+
+\bibitem{ZQ2004} Q. Zhang and C.-W Shu, {\em Error estimates to smooth solution of Runge-Kutta discontinuous
+Galerkin methods for scalar conservation laws}, SIAM. J. Numer. Anal, 42
+(2004), 641-666.
+
+\bibitem{ZQ2010} Q. Zhang and C.-W. Shu,{\em Stability analysis and a priori error estimates to the third order
+explicit Runge-Kutta discontinuous Galerkin method for scalar conservation laws}, SIAM
+J. Numer. Anal, 48 (2010), 1038–1063.
+
+\bibitem{YY2012} Y. Yang, C.-W. Shu, {\em Analysis of optimal superconvergence of discontinuous Galerkin method for linear hyperbolic equations}, SIAM J. Numer. Anal. 50 (2012), 3110–3133.
+
+\bibitem{CB2001GR} Cockburn B , Kanschat G , Perugia I , et al.{\em Superconvergence of the Local Discontinuous Galerkin Method for Elliptic Problems on Cartesian Grids}. SIAM Journal on Numerical Analysis, 2001, 39(1), 264-285.
+
+
+\bibitem{CB1997} Cockburn B , Shu C W . {\em The Local Discontinuous Galerkin Method For Time-Dependent Convection-Diffusion Systems[J]. SIAM Journal on Numerical Analysis}, 1997, 35(6), 2440-2463.
+
+\bibitem{XY2007} Xu Y, C.-W. Shu. {\em Error estimates of the semi-discrete local discontinuous Galerkin method for nonlinear convection–diffusion and KdV equations}. Computer Methods in Applied Mechanics and Engineering, 2007, 196(37-40):3805-3822.
+
+\bibitem{CYD2010} Cheng Y ,C.-W. Shu. {\em Superconvergence of Discontinuous Galerkin and Local Discontinuous Galerkin Schemes for Linear Hyperbolic and Convection-Diffusion Equations in One Space Dimension}. SIAM Journal on Numerical Analysis, 2010, 47(6):4044-4072.
+
+\bibitem{MB2018} Mahboub Baccouch. {\em Asymptotically Exact Posteriori Error Estimates for the Local Discontinuous Galerkin Method Applied to Nonlinear Convection–Diffusion Problems},Journal of Scientific Computing, {\bf 297} (2018), 1--37.
+
+\bibitem{PC2000} Paul Castillo .{\em An Optimal Estimate for the Local Discontinuous Galerkin Method. Discontinuous Galerkin Methods}. Springer Berlin Heidelberg, 2000.
+
+\bibitem{PC1975} P. Ciarlet, {\em The Finite Element Method for Elliptic Problems, North Holland}, 1975. MR0520174 (58:25001)
+
+\bibitem{CB2008GR}  Cockburn B , Dong B , Guzm\'{a}n, Johnny. {\em A superconvergent LDG-hybridizable Galerkin method for second-order elliptic problems}. Mathematics of Computation, 2008, 77(264):1887-1916.
+
+\bibitem{CB2008} Cockburn B , Dong B , Guzm\'{a}n, Johnny. {\em Optimal Convergence of the Original DG Method for the Transport-Reaction Equation on Special Meshes}. SIAM Journal on Numerical Analysis, 2008, 46(3):1250-1265.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\thispagestyle{fancy} \fancyhead[C]{{\kaishu 参考文献 }}
+
+
+
+
+
+\thispagestyle{fancy} \fancyhead[C]{{\kaishu 参考文献 }}
+\end{thebibliography}
+\newpage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
